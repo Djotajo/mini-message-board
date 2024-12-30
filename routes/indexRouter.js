@@ -20,9 +20,13 @@ const poruka = "tajna poruka";
 indexRouter.get("/", (req, res) =>
   res.render("index", { messages: messages, poruka: poruka })
 );
-// indexRouter.get("/:authorId", (req, res) => {
-//   const { authorId } = req.params;
-//   res.send(`Author ID: ${authorId}`);
-// });
+indexRouter.post("/new", (req, res) => {
+  messages.push({
+    text: req.body.message,
+    user: req.body.authorsName,
+    added: new Date(),
+  });
+  res.redirect("/");
+});
 
 module.exports = indexRouter;
