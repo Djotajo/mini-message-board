@@ -3,16 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Mini Message Board</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>TEST</h1>
-    <ul>
+    <%- include('navbar') %>
+
+    <div class="messages">
       <% messages.forEach((message) => { %>
-      <li><%= message.user %> - <%= message.text %> - <%= message.added %></li>
+      <div class="message">
+        <p><%= message.user %></p>
+        <p><%= message.text %></p>
+        <p>
+          <%= message.added.toLocaleTimeString([], { hour: '2-digit', minute:
+          '2-digit' }); %> <%= message.added.toLocaleDateString(); %>
+        </p>
+      </div>
+
       <% }) %>
-    </ul>
-    <h2><%= poruka %></h2>
-    <button><a href="/new">Idemo do forme</a></button>
+    </div>
+    <a href="/new"> <button class="newMessageButton">New message</button></a>
+    <%- include('footer') %>
   </body>
 </html>

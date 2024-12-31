@@ -15,11 +15,7 @@ const messages = [
   },
 ];
 
-const poruka = "tajna poruka";
-
-indexRouter.get("/", (req, res) =>
-  res.render("index", { messages: messages, poruka: poruka })
-);
+indexRouter.get("/", (req, res) => res.render("index", { messages: messages }));
 indexRouter.post("/new", (req, res) => {
   messages.push({
     text: req.body.message,

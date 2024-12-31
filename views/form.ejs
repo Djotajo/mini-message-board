@@ -1,7 +1,32 @@
-<form method="POST" action="/new">
-  <label for="authorsName"></label>
-  <input type="text" name="authorsName" id="authorsName" />
-  <label for="message"></label>
-  <input type="text" name="message" id="message" />
-  <input type="submit" />
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Message Board</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <%- include('navbar') %>
+
+    <form method="POST" action="/new">
+      <label for="authorsName"></label>
+      <input
+        type="text"
+        name="authorsName"
+        id="authorsName"
+        placeholder="Enter your name"
+      />
+      <label for="message"></label>
+      <textarea
+        rows="10"
+        cols="50"
+        name="message"
+        id="message"
+        placeholder="Enter your message "
+      ></textarea>
+      <input type="submit" class="formSubmit" />
+    </form>
+    <%- include('footer') %>
+  </body>
+</html>
