@@ -10,7 +10,7 @@
     <%- include('navbar') %>
 
     <div class="messages">
-      <% messages.forEach((message) => { %>
+      <% messages.forEach((message, index) => { %>
       <div class="message">
         <p><%= message.user %></p>
         <p><%= message.text %></p>
@@ -18,6 +18,7 @@
           <%= message.added.toLocaleTimeString([], { hour: '2-digit', minute:
           '2-digit' }); %> <%= message.added.toLocaleDateString(); %>
         </p>
+        <a href="/message/<%= index %>">See message</a>
       </div>
 
       <% }) %>

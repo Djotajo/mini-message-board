@@ -25,4 +25,13 @@ indexRouter.post("/new", (req, res) => {
   res.redirect("/");
 });
 
+indexRouter.get("/message/:id", (req, res) => {
+  const messageId = parseInt(req.params.id, 10);
+  if (messageId >= 0 && messageId < messages.length) {
+    res.render("message", { message: messages[messageId] });
+  } else {
+    res.status(404).send("Message not found");
+  }
+});
+
 module.exports = indexRouter;
