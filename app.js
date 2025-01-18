@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const path = require("node:path");
 const db = require("./db/queries");
 const http = require("http");

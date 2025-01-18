@@ -1,23 +1,28 @@
 const { Client } = require("pg");
+require("dotenv").config();
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS usernames (
-  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  username VARCHAR ( 255 )
-);
+CREATE TABLE IF NOT EXISTS mini_messages(id SERIAL PRIMARY KEY, author TEXT, message TEXT,  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 
-INSERT INTO usernames (username) 
+INSERT INTO mini_messages(author, message)
 VALUES
-  ('Bryan'),
-  ('Odin'),
-  ('Damon');
+('Djordje', 'Kako si prijatelju'),
+('Petar', 'Cao druze'),
+('Jovan', 'Pomaze Bog'),
+('Marko', 'Pozdrav momci'),
+('Aljosa', 'Cao Cao'),
+('Igor', 'Cao prijatelju'),
+('Zeljko', 'Zdravo'),
+('Srdjan', 'Kako si braco'),
+('Ognjen', 'Gdje ste momci'),
+('Bogdan', 'Gdje si brate')
+;
 `;
 
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString:
-      "postgresql://djordje:tajotajo990*@localhost:5432/top_users",
+    connectionString: process.env.DATABASE_URL,
   });
   await client.connect();
   await client.query(SQL);
