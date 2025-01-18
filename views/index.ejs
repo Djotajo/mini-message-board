@@ -11,12 +11,12 @@
 
     <div class="messages">
       <% messages.forEach((message, index) => { %>
-      <div class="message">
-        <p><%= message.user %></p>
-        <p><%= message.text %></p>
+      <div class="message" id="<%= message.id %>">
+        <p><%= message.author %>:</p>
+        <p><%= message.message %></p>
         <p>
-          <%= message.added.toLocaleTimeString([], { hour: '2-digit', minute:
-          '2-digit' }); %> <%= message.added.toLocaleDateString(); %>
+          <%= message.time.toLocaleTimeString([], { hour: '2-digit', minute:
+          '2-digit' }); %> <%= message.time.toLocaleDateString(); %>
         </p>
         <a href="/message/<%= index %>">See message</a>
       </div>

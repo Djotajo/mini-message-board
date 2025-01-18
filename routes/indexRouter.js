@@ -2,20 +2,30 @@ const { Router } = require("express");
 
 const indexRouter = Router();
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
+const newController = require("../controllers/newController");
 
-indexRouter.get("/", (req, res) => res.render("index", { messages: messages }));
+// const messages = [
+//   {
+//     text: "Hi there!",
+//     user: "Amando",
+//     added: new Date(),
+//   },
+//   {
+//     text: "Hello World!",
+//     user: "Charles",
+//     added: new Date(),
+//   },
+// ];
+
+// const messages = Array.from(newController.getAllMessages());
+console.log("ne dodje na red");
+
+indexRouter.get("/", async (req, res) => {
+  const messages = await newController.getAllMessages();
+  console.log("test");
+  res.render("index", { messages: messages });
+});
+
 indexRouter.post("/new", (req, res) => {
   messages.push({
     text: req.body.message,
