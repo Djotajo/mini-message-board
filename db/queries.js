@@ -8,45 +8,17 @@ async function getAllRows() {
 }
 
 async function getRow(id) {
-  const row = await sql`SELECT * FROM playing_with_neon WHERE id =${id}`;
-  return row;
+  const row = await sql`SELECT * FROM mini_messages WHERE id =${id}`;
+  return row.length > 0 ? row[0] : null;
 }
 
-async function insertRow(author, message, time) {
-  await sql`INSERT INTO playing_with_neon (author, message, time) VALUES (${author}, ${message}, ${time})`;
+async function insertRow(author, message) {
+  await sql`INSERT INTO mini_messages (author, message) VALUES (${author}, ${message})`;
 }
 
-async function deleteRow(id) {
-  await sql`DELETE FROM playing_with_neon WHERE id = ${id}`;
-}
-module.exports = { getAllRows, getRow, insertRow, deleteRow };
-
-// const pool = require("./sql");
-
-// async function getAllUsernames() {
-//   const { rows } = await pool.query("SELECT * FROM usernames");
-//   return rows;
+// Halt for now
+// async function deleteRow(id) {
+//   await sql`DELETE FROM playing_with_neon WHERE id = ${id}`;
 // }
 
-// async function searchUsernames(query) {
-//   const { rows } = await pool.query(
-//     "SELECT * FROM usernames WHERE username LIKE ($1)",
-//     [`%${query}%`]
-//   );
-//   return rows;
-// }
-
-// async function insertUsername(username) {
-//   await pool.query("INSERT INTO usernames (username) VALUES ($1)", [username]);
-// }
-
-// async function deleteAllUsers() {
-//   await pool.query("DELETE FROM usernames");
-// }
-
-// module.exports = {
-//   getAllUsernames,
-//   searchUsernames,
-//   insertUsername,
-//   deleteAllUsers,
-// };
+module.exports = { getAllRows, getRow, insertRow };

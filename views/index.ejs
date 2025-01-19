@@ -18,7 +18,7 @@
           <%= message.time.toLocaleTimeString([], { hour: '2-digit', minute:
           '2-digit' }); %> <%= message.time.toLocaleDateString(); %>
         </p>
-        <a href="/message/<%= index %>">See message</a>
+        <a href="/message/<%= message.id %>">See message</a>
       </div>
 
       <% }) %>
